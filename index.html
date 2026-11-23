@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Eren Osmantsa kişisel web sitesi – hakkımda, ilgi alanlarım ve daha fazlası." />
+  <title>Eren Osmantsa | Kişisel Web Sitesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & tokens ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0f1a;
+      --surface:     #151826;
+      --card:        #1c2035;
+      --accent:      #6c63ff;
+      --accent2:     #ff6584;
+      --text:        #e8eaf6;
+      --muted:       #8890b5;
+      --radius:      18px;
+      --shadow:      0 8px 40px rgba(0,0,0,.45);
+      --transition:  .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Animated gradient background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(108,99,255,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,101,132,.14) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── Hero section ── */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .avatar-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin-bottom: 28px;
+      box-shadow: 0 0 0 6px rgba(108,99,255,.25);
+      font-size: 3rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(120deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+      animation: fadeUp .8s ease both;
+    }
+
+    .card:nth-child(2) { animation-delay: .1s; }
+    .card:nth-child(3) { animation-delay: .2s; }
+    .card:nth-child(4) { animation-delay: .3s; }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(108,99,255,.18);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--text);
+      font-size: .97rem;
+      line-height: 1.8;
+    }
+
+    /* ── Interests list ── */
+    .interest-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .interest-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.06);
+      font-size: .95rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .interest-list li:hover {
+      transform: translateX(6px);
+      box-shadow: 0 4px 20px rgba(108,99,255,.22);
+      border-color: rgba(108,99,255,.35);
+    }
+
+    .interest-list li .badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Image section ── */
+    .photo-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 8px;
+      position: relative;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+
+    .photo-wrap:hover img { transform: scale(1.04); }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 22px;
+      background: linear-gradient(to top, rgba(10,12,24,.95), transparent);
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .82rem;
+      padding: 40px 0 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top: 20px;
+    }
+
+    footer span { color: var(--accent2); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .card { padding: 26px 22px; }
+      .hero { padding: 50px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero" id="hero">
+      <div class="avatar-ring">🧑‍💻</div>
+      <h1>Eren Osmantsa</h1>
+      <p class="hero-sub">Kişisel Web Sitesi &nbsp;·&nbsp; v1.0</p>
+    </section>
+
+    <!-- ── Hakkımda ── -->
+    <section class="card" id="hakkimda">
+      <h2>
+        <span class="icon">👤</span>
+        Hakkımda
+      </h2>
+      <p>
+        Merhaba! Ben <strong>Eren Osmantsa</strong>. Duyguları güçlü, dürüstlüğü ve sadakati her şeyden önemli
+        gören bir insanım. Yeni insanlarla tanışmayı, güzel anlar yaşamayı ve hayatın küçük sevinçlerini
+        fark etmeyi çok severim. Gerçeği, acı da olsa yalandan her zaman üstün tutarım; sahte insanlardan
+        uzak durmayı tercih ederim. Güçlü olmaya çalışırken hassasiyetimi de korumaktan çekinmem —
+        çünkü dürüstçe kendim olmak benim için en değerli şeydir.
+      </p>
+    </section>
+
+    <!-- ── İlgi Alanlarım ── -->
+    <section class="card" id="ilgi-alanlari">
+      <h2>
+        <span class="icon">✨</span>
+        İlgi Alanlarım
+      </h2>
+      <ul class="interest-list">
+        <li>
+          <div class="badge">📚</div>
+          <div>
+            <strong>Kitap Okumak</strong><br />
+            <small style="color:var(--muted)">Roman, felsefe ve kişisel gelişim türlerini özellikle seviyorum.</small>
+          </div>
+        </li>
+        <li>
+          <div class="badge">📸</div>
+          <div>
+            <strong>Fotoğrafçılık</strong><br />
+            <small style="color:var(--muted)">Anları ölümsüzleştirmek ve güzelliği yakalamak beni heyecanlandırıyor.</small>
+          </div>
+        </li>
+        <li>
+          <div class="badge">🎵</div>
+          <div>
+            <strong>Müzik Dinlemek</strong><br />
+            <small style="color:var(--muted)">Farklı türlerde müzik keşfetmek ve duygu dünyamı zenginleştirmek.</small>
+          </div>
+        </li>
+        <li>
+          <div class="badge">🌍</div>
+          <div>
+            <strong>Seyahat Etmek</strong><br />
+            <small style="color:var(--muted)">Yeni kültürler tanımak, farklı şehirlerde izler bırakmak.</small>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Fotoğraf ── -->
+    <section class="card" id="fotograf">
+      <h2>
+        <span class="icon">🖼️</span>
+        İlgi Alanımdan Bir Kare
+      </h2>
+      <div class="photo-wrap">
+        <img src="interests.jpg" alt="Kitaplar, kamera ve kulaklık – ilgi alanlarımdan bir görüntü" />
+        <p class="photo-caption">📚 Kitaplar · 📸 Fotoğrafçılık · 🎵 Müzik — Üç tutku, bir kare.</p>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <p>© 2026 <span>Eren Osmantsa</span> — Tüm hakları saklıdır.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
