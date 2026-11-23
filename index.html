@@ -218,6 +218,69 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Skills ── */
+    .skills-grid { display: grid; gap: 18px; margin-top: 4px; }
+
+    .skill-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: .9rem;
+    }
+
+    .skill-pct { color: var(--accent); font-weight: 600; }
+
+    .skill-bar {
+      height: 8px;
+      background: var(--surface);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      animation: growBar 1.2s ease both;
+    }
+
+    @keyframes growBar {
+      from { width: 0 !important; }
+    }
+
+    /* ── Contact ── */
+    .contact-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(108,99,255,.4);
+    }
+
+    .contact-btn.alt {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--text);
+    }
+
+    .contact-btn.alt:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .card { padding: 26px 22px; }
@@ -297,6 +360,57 @@
       <div class="photo-wrap">
         <img src="interests.jpg" alt="Kitaplar, kamera ve kulaklık – ilgi alanlarımdan bir görüntü" />
         <p class="photo-caption">📚 Kitaplar · 📸 Fotoğrafçılık · 🎵 Müzik — Üç tutku, bir kare.</p>
+      </div>
+    </section>
+
+    <!-- ── Becerilerim ── -->
+    <section class="card" id="becerilerim">
+      <h2>
+        <span class="icon">🚀</span>
+        Becerilerim
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>HTML &amp; CSS</span>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Fotoğrafçılık</span>
+            <span class="skill-pct">78%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width:78%; background: linear-gradient(90deg,#ff6584,#ff9a9a)"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>İletişim &amp; Empati</span>
+            <span class="skill-pct">92%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%; background: linear-gradient(90deg,#43e97b,#38f9d7)"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Problem Çözme</span>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%; background: linear-gradient(90deg,#f7971e,#ffd200)"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── İletişim ── -->
+    <section class="card" id="iletisim">
+      <h2>
+        <span class="icon">✉️</span>
+        İletişim
+      </h2>
+      <p style="margin-bottom:20px; color:var(--muted);">Benimle iletişime geçmek ister misiniz? Aşağıdaki kanallardan ulaşabilirsiniz.</p>
+      <div class="contact-links">
+        <a class="contact-btn" href="mailto:eren@example.com" id="email-link">📧 E-posta Gönder</a>
+        <a class="contact-btn alt" href="https://github.com" target="_blank" rel="noopener" id="github-link">🐙 GitHub</a>
       </div>
     </section>
 
